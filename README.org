@@ -1,0 +1,39 @@
+* el-narrow
+
+Narrowing commands for elisp.
+
+** Requirements
+
++ Emacs >= 25.1
+
+** Installation
+
+*** Manually
+
+Download repository and it to your load path in your init file:
+
+#+begin_src elisp :eval no
+
+(add-to-list 'load-path "/path/to/el-narrow)
+
+(require 'el-narrow)
+
+#+end_src
+
+*** With use-package and straight
+
+#+begin_src elisp :eval no
+
+(use-package el-narrow
+	:straight (el-narrow
+			       :repo "KarimAziev/el-narrow"
+			       :type git
+			       :host github)
+  :commands (el-narrow-dwim))
+
+#+end_src
+
+** Commands
+
+*** ~el-narrow-dwim~
+Narrow to the closest parent form which head is a symbol allowed to narrow. Customize variable ~el-narrow-things-to-narrow~ to specify these symbols.
