@@ -41,18 +41,31 @@
 ;;; Code:
 
 
-(defcustom el-narrow-things-to-narrow
-  '(defconst defcustom defvaralias defvar-local defface defvar defgroup
-     deftheme defun defmacro defsubst define-inline define-advice defadvice
-     define-skeleton define-compilation-mode define-minor-mode
-     define-global-minor-mode define-globalized-minor-mode define-derived-mode
-     define-generic-mode ert-deftest cl-defun cl-defsubst cl-defmacro
-     cl-define-compiler-macro cl-defgeneric cl-defmethod define-compiler-macro
-     define-modify-macro defsetf define-setf-expander define-method-combination
-     defalias cl-flet defun-ivy-read pretty-hydra-define defhydra defgeneric
-     defmethod defun-ivy+ defgroup deftheme define-widget define-error defface
-     cl-deftype cl-defstruct deftype defstruct defpackage defclass use-package
-     use-package!)
+(defcustom el-narrow-things-to-narrow '(defconst defcustom defvaralias
+                                         defvar-local defface defvar defgroup
+                                         deftheme defun defmacro defsubst
+                                         define-inline define-advice defadvice
+                                         define-skeleton define-compilation-mode
+                                         define-minor-mode
+                                         define-global-minor-mode
+                                         define-globalized-minor-mode
+                                         define-derived-mode define-generic-mode
+                                         ert-deftest cl-defun cl-defsubst
+                                         cl-defmacro cl-define-compiler-macro
+                                         cl-defgeneric cl-defmethod
+                                         define-compiler-macro
+                                         define-modify-macro defsetf
+                                         define-setf-expander
+                                         define-method-combination defalias
+                                         cl-flet defun-ivy-read
+                                         pretty-hydra-define defhydra defgeneric
+                                         defmethod defun-ivy+ defgroup deftheme
+                                         define-widget define-error defface
+                                         cl-deftype cl-defstruct deftype
+                                         defstruct defpackage defclass
+                                         use-package transient-define-prefix
+                                         transient-define-suffix
+                                         transient-define-infix use-package!)
   "List of allowed symbols to narrow."
   :type '(repeat symbol)
   :group 'el-narrow)
