@@ -13,9 +13,7 @@ Narrowing commands for elisp.
 Download repository and it to your load path in your init file:
 
 #+begin_src elisp :eval no
-
-(add-to-list 'load-path "/path/to/el-narrow)
-
+(add-to-list 'load-path "/path/to/el-narrow")
 (require 'el-narrow)
 
 #+end_src
@@ -23,17 +21,22 @@ Download repository and it to your load path in your init file:
 *** With use-package and straight
 
 #+begin_src elisp :eval no
-
 (use-package el-narrow
-	:straight (el-narrow
-			       :repo "KarimAziev/el-narrow"
-			       :type git
-			       :host github)
-  :commands (el-narrow-dwim))
-
+  :straight (el-narrow
+             :repo "KarimAziev/el-narrow"
+             :type git
+             :host github)
+  :commands (el-narrow-dwim
+             el-narrow-beginning-of-defun))
 #+end_src
 
 ** Commands
 
 *** ~el-narrow-dwim~
-Narrow to the closest parent form which head is a symbol allowed to narrow. Customize variable ~el-narrow-things-to-narrow~ to specify these symbols.
+Narrow to the closest parent form which head is a symbol allowed to narrow. Allowed symbols are listed in =el-narrow-things-to-narrow=.
+*** ~el-narrow-beginning-of-defun~
+Jump to the beginning of first parent list from =el-narrow-things-to-narrow=.
+** Customization
+
+*** ~el-narrow-things-to-narrow~
+List of allowed symbols to narrow.

@@ -121,7 +121,8 @@ If SYMBOLS is nil use `el-narrow-things-to-narrow'."
 
 ;;;###autoload
 (defun el-narrow-beginning-of-defun ()
-  "Jump to beginning of first parent list from `el-narrow-things-to-narrow'."
+  "Jump to the beginning of the first allowed parent form.
+Allowed symbols are listed in `el-narrow-things-to-narrow'."
   (interactive)
   (pcase-let ((`(,beg . ,_)
                (el-narrow-bounds-of-def-sexp)))
@@ -129,11 +130,12 @@ If SYMBOLS is nil use `el-narrow-things-to-narrow'."
 
 ;;;###autoload
 (defun el-narrow-dwim ()
-  "Narrow to closest parent form which head is a symbol allowed to narrow.
+  "Narrow to the closest parent form which head is a symbol allowed to narrow.
 Allowed symbols are listed in `el-narrow-things-to-narrow'."
   (interactive)
   (when-let ((bounds (el-narrow-bounds-of-def-sexp)))
-    (narrow-to-region (car bounds) (cdr bounds))))
+    (narrow-to-region (car bounds)
+                      (cdr bounds))))
 
 (provide 'el-narrow)
 ;;; el-narrow.el ends here
