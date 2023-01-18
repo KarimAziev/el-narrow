@@ -120,6 +120,14 @@ If SYMBOLS is nil use `el-narrow-things-to-narrow'."
        (cons start (point))))))
 
 ;;;###autoload
+(defun el-narrow-beginning-of-defun ()
+  "Jump to beginning of first parent list from `el-narrow-things-to-narrow'."
+  (interactive)
+  (pcase-let ((`(,beg . ,_)
+               (el-narrow-bounds-of-def-sexp)))
+    (goto-char beg)))
+
+;;;###autoload
 (defun el-narrow-dwim ()
   "Narrow to closest parent form which head is a symbol allowed to narrow.
 Allowed symbols are listed in `el-narrow-things-to-narrow'."
