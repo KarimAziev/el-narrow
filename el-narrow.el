@@ -40,7 +40,6 @@
 
 ;;; Code:
 
-
 (defcustom el-narrow-things-to-narrow '(defconst defcustom defvaralias
                                          defvar-local defface defvar defgroup
                                          deftheme defun defmacro defsubst
@@ -51,6 +50,7 @@
                                          define-globalized-minor-mode
                                          define-derived-mode define-generic-mode
                                          ert-deftest cl-defun cl-defsubst
+                                         easy-menu-define
                                          cl-defmacro cl-define-compiler-macro
                                          cl-defgeneric cl-defmethod
                                          define-compiler-macro
