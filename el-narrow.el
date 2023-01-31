@@ -124,9 +124,13 @@ If SYMBOLS is nil use `el-narrow-things-to-narrow'."
   "Jump to the beginning of the first allowed parent form.
 Allowed symbols are listed in `el-narrow-things-to-narrow'."
   (interactive)
-  (pcase-let ((`(,beg . ,_)
-               (el-narrow-bounds-of-def-sexp)))
-    (goto-char beg)))
+  (pcase-let* ((pos (point))
+               (`(,beg . ,_)
+                (el-narrow-bounds-of-def-sexp)))
+    (cond ((or (not beg)
+               (= pos beg))
+           (beginning-of-defun))
+          (beg (goto-char beg)))))
 
 ;;;###autoload
 (defun el-narrow-dwim ()
