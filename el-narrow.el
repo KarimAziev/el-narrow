@@ -6,7 +6,7 @@
 ;; URL: https://github.com/KarimAziev/el-narrow
 ;; Version: 0.1.0
 ;; Keywords: lisp
-;; Package-Requires: ((emacs "25.1"))
+;; Package-Requires: ((emacs "27.1"))
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -110,7 +110,7 @@ Return new position if changed, nil otherwise."
 If SYMBOLS is nil use `el-narrow-things-to-narrow'."
   (el-narrow-up-list-until-nil
    (when-let ((sexp (sexp-at-point)))
-     (when-let ((start (and (listp sexp)
+     (when-let ((start (and (proper-list-p sexp)
                             (nth 1 sexp)
                             (memq (car sexp)
                                   (or symbols
