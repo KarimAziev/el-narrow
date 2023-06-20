@@ -134,14 +134,14 @@ Allowed symbols are listed in `el-narrow-things-to-narrow'."
 
 ;;;###autoload
 (defun el-narrow-dwim ()
-	"Narrow to the closest parent form which head is a symbol allowed to narrow.
+  "Narrow to the closest parent form which head is a symbol allowed to narrow.
 Allowed symbols are listed in `el-narrow-things-to-narrow'."
-	(interactive)
+  (interactive)
   (when-let ((bounds (or (el-narrow-bounds-of-def-sexp)
-												 (when (beginning-of-defun)
-													 (bounds-of-thing-at-point 'sexp)))))
-    (narrow-to-region (car bounds)
-                      (cdr bounds))))
+                         (when (beginning-of-defun)
+                           (bounds-of-thing-at-point 'sexp)))))
+    (funcall-interactively #'narrow-to-region (car bounds)
+                           (cdr bounds))))
 
 (provide 'el-narrow)
 ;;; el-narrow.el ends here
