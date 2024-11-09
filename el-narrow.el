@@ -74,13 +74,13 @@
   "Move by calling FN N times.
 Return new position if changed, nil otherwise."
   (unless n (setq n 1))
-  (when-let ((str-start (nth 8 (syntax-ppss (point)))))
+  (when-let* ((str-start (nth 8 (syntax-ppss (point)))))
     (goto-char str-start))
   (let ((init-pos (point))
         (pos)
         (count n))
     (while (and (not (= count 0))
-                (when-let ((end (ignore-errors
+                (when-let* ((end (ignore-errors
                                   (funcall fn)
                                   (point))))
                   (unless (= end (or pos init-pos))
@@ -109,8 +109,8 @@ Return new position if changed, nil otherwise."
   "Return bounds of first parent sexp which head is a member of SYMBOLS.
 If SYMBOLS is nil use `el-narrow-things-to-narrow'."
   (el-narrow-up-list-until-nil
-   (when-let ((sexp (sexp-at-point)))
-     (when-let ((start (and (proper-list-p sexp)
+   (when-let* ((sexp (sexp-at-point)))
+     (when-let* ((start (and (proper-list-p sexp)
                             (nth 1 sexp)
                             (memq (car sexp)
                                   (or symbols
@@ -137,7 +137,7 @@ Allowed symbols are listed in `el-narrow-things-to-narrow'."
   "Narrow to the closest parent form which head is a symbol allowed to narrow.
 Allowed symbols are listed in `el-narrow-things-to-narrow'."
   (interactive)
-  (when-let ((bounds (or (el-narrow-bounds-of-def-sexp)
+  (when-let* ((bounds (or (el-narrow-bounds-of-def-sexp)
                          (when (beginning-of-defun)
                            (bounds-of-thing-at-point 'sexp)))))
     (funcall-interactively #'narrow-to-region (car bounds)
